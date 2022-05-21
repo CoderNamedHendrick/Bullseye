@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var alertIsVisible: Bool = false;
+    @State private var sliderValue: Double = 10.0;
+    @State private var game: Game = Game();
+    
+    
     var body: some View {
         VStack {
             Text("🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
@@ -17,7 +23,7 @@ struct ContentView: View {
                 .lineSpacing(4.0)
                 .font(.footnote)
                 
-            Text("89")
+            Text(String(game.target))
                 .kerning(-1.0)
                 .fontWeight(.black)
                 .font(.largeTitle)
@@ -28,15 +34,27 @@ struct ContentView: View {
                     .font(.headline)
                     .fontWeight(Font.Weight.semibold)
                 
-                Slider(value: .constant(50), in : 1.0...100)
+                Slider(value: self.$sliderValue, in : 1.0...100)
                 Text("100")
                     .font(.headline)
                     .fontWeight(Font.Weight.semibold)
             }
             
             Button("Hit me") {
-                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                print("Hello SwiftUI");
+                self.alertIsVisible = true;
             }.buttonStyle(.bordered)
+                .alert(isPresented: $alertIsVisible, content: {
+                    let roundedValue : Int = Int(self.sliderValue.rounded());
+                    return Alert(
+                        title: Text("Hello there!"),
+                        message: Text("The slider's value is \(roundedValue).\n" +
+                            "You scored \(self.game.points(sliderValue: roundedValue)) points this round."),
+                        dismissButton: .default(Text("Awesome!"))
+                    );
+                })
+            
+            
         }
     }
 }

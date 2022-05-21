@@ -17,6 +17,7 @@
 		E36813782838DD9800C56134 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368134E2838DD9700C56134 /* ContentView.swift */; };
 		E36813792838DD9800C56134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E368134F2838DD9800C56134 /* Assets.xcassets */; };
 		E368137A2838DD9800C56134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E368134F2838DD9800C56134 /* Assets.xcassets */; };
+		E368138D283966A600C56134 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368138C283966A600C56134 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E368136D2838DD9800C56134 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36813712838DD9800C56134 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		E36813732838DD9800C56134 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		E368138C283966A600C56134 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,9 @@
 		E368134C2838DD9700C56134 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E368134D2838DD9700C56134 /* BullseyeApp.swift */,
-				E368134E2838DD9700C56134 /* ContentView.swift */,
-				E368134F2838DD9800C56134 /* Assets.xcassets */,
+				E368138B283965BB00C56134 /* App */,
+				E368138A283965A400C56134 /* Models */,
+				E36813892839659A00C56134 /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -139,6 +141,31 @@
 				E36813732838DD9800C56134 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		E36813892839659A00C56134 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E368134E2838DD9700C56134 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E368138A283965A400C56134 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E368138C283966A600C56134 /* Game.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E368138B283965BB00C56134 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E368134D2838DD9700C56134 /* BullseyeApp.swift */,
+				E368134F2838DD9800C56134 /* Assets.xcassets */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36813772838DD9800C56134 /* ContentView.swift in Sources */,
+				E368138D283966A600C56134 /* Game.swift in Sources */,
 				E36813752838DD9800C56134 /* BullseyeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QW87FGX966;
 				ENABLE_PREVIEWS = YES;
@@ -492,6 +521,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QW87FGX966;
 				ENABLE_PREVIEWS = YES;
