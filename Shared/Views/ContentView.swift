@@ -17,10 +17,10 @@ struct ContentView: View {
         ZStack {
             BackgroundView(game: $game);
             VStack {
-                InstructionsView(game: $game);
-                SliderView(sliderValue: $sliderValue);
+                InstructionsView(game: $game).padding(EdgeInsets.init(top: CGFloat(0.0), leading: CGFloat(0.0), bottom: CGFloat(100.0), trailing: CGFloat(0.0)));
                 HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game);
             }
+            SliderView(sliderValue: $sliderValue);
         }
     }
 }
@@ -103,6 +103,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().previewLayout(.fixed(width: 568, height: 320))
         ContentView().preferredColorScheme(.dark)
             
-        ContentView().previewLayout(.fixed(width: 568, height: 320))
+        ContentView().previewLayout(.fixed(width: 568, height: 320)).preferredColorScheme(.dark)
     }
 }
