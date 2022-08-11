@@ -17,10 +17,19 @@ struct ContentView: View {
         ZStack {
             BackgroundView(game: $game);
             VStack {
-                InstructionsView(game: $game).padding(EdgeInsets.init(top: CGFloat(0.0), leading: CGFloat(0.0), bottom: CGFloat(100.0), trailing: CGFloat(0.0)));
-                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game);
+                InstructionsView(game: $game).padding(.bottom, alertIsVisible ? 0 : 100);
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale);
+                } else {
+                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale);
+                }
             }
-            SliderView(sliderValue: $sliderValue);
+            if !alertIsVisible {
+                SliderView(sliderValue: $sliderValue)
+                    .transition(.scale);
+            }
         }
     }
 }
@@ -59,8 +68,9 @@ struct HitMeButton : View {
     
     var body: some View {
         Button(action: {
-            alertIsVisible = true;
-           
+            withAnimation {
+                alertIsVisible = true;
+            }
         }) {
             Text("Hit me".uppercased())
                 .bold()
@@ -77,21 +87,8 @@ struct HitMeButton : View {
         .foregroundColor(Color.white)
         .cornerRadius(21.0)
         .overlay(
-            RoundedRectangle(cornerRadius: 21.0)
-                .strokeBorder(Color.white, lineWidth: 2.0)
-        )
-        .alert(isPresented: $alertIsVisible,
-            content: {
-            let roundedValue = Int(sliderValue.rounded());
-            let points = game.points(sliderValue: roundedValue);
-            return Alert(
-                title: Text("Hello there!"),
-                message: Text("The slider's value is \(roundedValue).\n" +
-                    "You scored \(points) points this round."),
-                dismissButton: .default(Text("Awesome!")) {
-                    game.startNewRound(points: points);
-                });
-            }
+            RoundedRectangle(cornerRadius: Constants.General.roundRectCornerRadius)
+                .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
         )
     }
 }
