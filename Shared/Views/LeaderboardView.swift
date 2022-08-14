@@ -15,7 +15,7 @@ struct LeaderBoardView: View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             VStack(spacing: 10) {
-                HeaderView(leaderBoardIsShowing: $leaderBoardIsShowing);
+                HeaderView(leaderBoardIsShowing: $leaderBoardIsShowing).padding(.top);
                 LabelView();
                 ScrollView {
                     VStack(spacing: 10) {
